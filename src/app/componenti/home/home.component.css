@@ -1,0 +1,12 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+input.ng-touched.ng-invalid{
+  background-color: red !important;
+}
+input.ng-valid{
+  background-color: green !important;
+}

@@ -1,0 +1,60 @@
+<main class="flex-shrink-0">
+<div class="container">
+  <h2 style="margin-top: 50px;">Contacts</h2>
+  <!--<p style="text-transform: uppercase; margin-top: 50px;">Lista Contatti</p>-->
+  <p></p>
+  <div class="row">
+  <div class="col">
+    <table class="table table-striped">
+      <!--<thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th scope="col">Email</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>-->
+      <tbody>
+  @for(persona of persone; track persona.email) {
+      <tr>
+        <td>{{persona.email }}</td>
+        <td>
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col">
+              <a routerLink="/contact/{{persona.id}}" (click)="onOpenCard(persona.id)" class="btn">
+                <i class="update bi bi-info-square"></i>
+              </a>
+            </div> 
+          </div>
+        </td>
+      </tr>
+  }
+  @empty {
+    <tr>
+      <td colspan="7">
+        <div class="alert alert-danger" style="text-align: center;">NO DATA</div>
+      </td>
+    </tr>
+  }
+</tbody>
+</table>
+  </div>  
+   <div class="col">
+    <router-outlet></router-outlet>
+   </div>
+
+  </div>
+
+</div>
+</main>
+
+<!--<div *ngFor="let persona of persone, index as i">
+  <div class="example-button-row">
+    <a routerLink="/contact/{{i}}" (click)="onOpenCard(persona.id)"><p class="mail-user">{{ persona.email }}</p></a>
+  </div>
+</div>-->
+
+<!--
+<div class="col col-md-8">
+<ng-template #profiloContatto>
+    <app-contatto [contatto]="persona"></app-contatto>
+</ng-template>-->

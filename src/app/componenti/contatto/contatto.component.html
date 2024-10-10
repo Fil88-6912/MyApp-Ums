@@ -1,0 +1,103 @@
+<!--<p>contatto works!</p>-->
+
+<!--<p>Profilo di {{personaNome}}</p>
+<p>Id user: {{personaId}}</p>
+<button class="btn-primary" (click)="onDeletePersona(personaId)"><i class="delete bi bi-trash"></i></button>-->
+<!--<p>Colore preferito: {{contatto.color}}</p>-->
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Dati utente</mat-card-title>
+      <span class="example-spacer"></span>
+      <button class="btn" (click)="onDeletePersona(persona.id)"><i class="delete bi bi-trash"></i></button>
+      <button class="btn" (click)="onActivateForm()"><i class="update bi bi-pencil-square"></i></button>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(persona.id)">
+        <fieldset [disabled]="isDisabled">
+        @if(persona){
+        <div class="mb-3">
+          <label for="userName" class="form-label">Userame</label>
+          <input type="text" required formControlName="userName" id="userName" name="userName" class="form-control"
+            minlength="4" placeholder="Username" value={{persona.userName}}>
+          @if(!userform.get('userName').valid && (userform.get('userName').dirty || userform.get('userName').touched)){
+          <div class="alert alert-danger">
+            <div *ngIf="userform.get('userName').errors?.['required']">Username is required</div>
+            <div *ngIf="userform.get('userName').errors?.['minlength']">Username length must be at least 4 chars</div>
+          </div>
+          }
+        </div>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Nome</label>
+          <input type="text" required formControlName="firstName" id="firstName" name="firstName" class="form-control"
+            minlength="4" placeholder="Nome" value={{persona.firstName}}>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Cognome</label>
+          <input type="text" required formControlName="lastName" id="lastName" name="lastName" class="form-control"
+            minlength="4" placeholder="Cognome" value={{persona.lastName}}>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" required formControlName="phoneNumber" id="phoneNumber" name="phoneNumber"
+            class="form-control" placeholder="+39 000123456" value={{persona.phoneNumber}}>
+        </div> 
+        @if(!userform.get('phoneNumber').valid && userform.get('phoneNumber').touched){
+        <div class="alert alert-danger">
+          <div *ngIf="userform.get('phoneNumber').errors?.['required']">Phone number is required</div>
+        </div>
+        }
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" email required formControlName="email" id="email" name="email"
+            class="form-control" placeholder="johndoe@gmail.com" value={{persona.email}}>
+        </div> 
+        @if(userform.get('email').invalid && (userform.get('email').dirty || userform.get('email').touched)){
+        <div class="alert alert-danger">
+          <div *ngIf="userform.get('email').errors?.['required']">Email is required</div>
+          <div *ngIf="userform.get('email').errors?.['email']">Wrong email </div>
+        </div>
+        }
+        }
+        @else {
+        <div class="alert alert-danger">User not found</div>
+        }
+      
+        <div class="mb-3 text-center">
+          <button type="submit" [disabled]="!userform.valid" class="btn btn-primary me-2">Submit</button>
+          <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+        </div>
+      </fieldset>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="onCloseCard()">Close</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+<!--<input type="hidden" formControlName="userId" name="userId" id="userId" class="form-control" value={{persona.id}}>
+  
+@if(persona){
+        <p></p>
+        <p>Username: {{persona.userName}}</p>
+        <p>Nome: {{persona.firstName}}</p>
+        <p>Cognome: {{persona.lastName}}</p>
+        <p>Phone number: {{persona.phoneNumber}}</p>
+      }
+      @else {
+        <p></p>
+        <div class="alert alert-danger">User not found</div>
+}-->
+
+<!--<div class="mb-3">
+  <label for="email" class="form-label">Email</label>
+  <input type="email" email required id="email" name="email"
+    class="form-control" placeholder="johndoe@gmail.com" value="userProva@yellow.it">
+</div> 
+@if(userform.get('email').invalid && (userform.get('email').dirty || userform.get('email').touched)){
+<div class="alert alert-danger">
+  <div *ngIf="userform.get('email').errors?.['required']">Email is required</div>
+  <div *ngIf="userform.get('email').errors?.['email']">Wrong email </div>
+</div>
+}-->

@@ -1,0 +1,43 @@
+<main class="flex-shrink-0">
+  <div class="container">
+    <h2 style="margin-top: 50px;">About</h2>
+
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform)">
+    @if(isUser){
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="hidden" name="userId" value={{user.id}}>
+      <input type="text" required formControlName="name" id="name" name="name" class="form-control"
+        minlength="4" placeholder="User name" value={{user.nome}}>
+      @if(!userform.get('name').valid && (userform.get('name').dirty || userform.get('name').touched)){
+      <div class="alert alert-danger">
+        <div *ngIf="userform.get('name').errors?.['required']">Name is required</div>
+        <div *ngIf="userform.get('name').errors?.['minlength']">Name length must be at least 4 chars</div>
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" email required id="email" name="email"
+        class="form-control" placeholder="johndoe@gmail.com" value="userProva@yellow.it">
+    </div> 
+    @if(userform.get('email').invalid && (userform.get('email').dirty || userform.get('email').touched)){
+    <div class="alert alert-danger">
+      <div *ngIf="userform.get('email').errors?.['required']">Email is required</div>
+      <div *ngIf="userform.get('email').errors?.['email']">Wrong email </div>
+    </div>
+    }
+    }
+    @else {
+    <div class="alert alert-danger">User not found</div>
+    }
+  
+    <div class="mb-3 text-center">
+      <a [routerLink]="['/contact']" class="btn btn-info me-2">Back</a>
+      <button type="submit" [disabled]="!userform.valid" class="btn btn-primary me-2">Submit</button>
+      <button type="button" (click)="resetForm(userform)" class="btn btn-secondary ms-2">Reset</button>
+    </div>
+  </form>
+</div>
+</main>
+

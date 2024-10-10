@@ -1,0 +1,23 @@
+.mail-user:hover{
+    color: orange;
+}
+
+.btn-primary {
+    width: 30px;
+    height: 30px;
+    color: blue;
+  }
+
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+
+.update {
+    color: blue;
+    cursor:pointer
+  }
+  
+.update:hover{
+    color: orange;
+  }

@@ -1,0 +1,36 @@
+.example-card {
+    max-width: 300px;
+    max-height: 900px;
+  }
+
+.delete {
+  color: red;
+  cursor:pointer
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.update {
+  color: blue;
+  cursor:pointer
+}
+
+.update:hover{
+  color: orange;
+}
+
+.delete:hover{
+  color: rgb(184, 43, 43);
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}

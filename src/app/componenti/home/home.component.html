@@ -1,0 +1,42 @@
+<!--<p>home works!</p>-->
+
+<!--<form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)">
+ <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" name="nome" ngModel required/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" ngModel required email/>
+  </mat-form-field> 
+  <mat-form-field>
+    <mat-label>Colori</mat-label>
+    <mat-select name="colore" ngModel>
+      <mat-option value="red">Rosso</mat-option>
+      <mat-option value="blue">Blu</mat-option>
+    </mat-select>
+  </mat-form-field>
+ <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Invia</button>
+</form>-->
+<main class="flex-shrink-0">
+  <div class="container"> 
+<h2 style="margin-top: 50px;">{{title}}</h2>
+<p style="text-transform: uppercase; margin-top: 50px;">Inserisci nuovo utente:</p>
+<form [formGroup]="homeform" (ngSubmit)="onSubmit(homeform)">
+  <mat-form-field>
+     <mat-label>Nome</mat-label>
+     <input matInput type="text" name="nome" formControlName="nome">
+   </mat-form-field>
+   <p *ngIf="!homeform.get('nome').valid && homeform.get('nome').touched">Inserisci un nome</p>
+   <mat-form-field>
+     <mat-label>Email</mat-label>
+     <input matInput type="email" name="email" formControlName="email"/>
+   </mat-form-field> 
+   <mat-form-field>
+     <mat-label>Phone Number</mat-label>
+     <input matInput type="text" name="phoneNumber" formControlName="phoneNumber">
+   </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Invia</button>
+ </form>
+</div>
+</main>
