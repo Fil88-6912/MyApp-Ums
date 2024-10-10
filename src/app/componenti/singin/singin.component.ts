@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { user } from '../../modelli/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthInterceptor } from '../../auth/auth.interceptor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-singin',
@@ -20,15 +21,18 @@ import { AuthInterceptor } from '../../auth/auth.interceptor';
 export class SinginComponent {
   user: user | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private snackbar: MatSnackBar) {
   }
 
-  onSubmit(form: NgForm){
+  async onSubmit(form: NgForm): Promise<void> {
     const email = form.value.email
     const password = form.value.password
-    this.authService.singIn(email, password).subscribe((data: any) => {
-      console.log(data)
-      this.router.navigate(['/welcome'])
+    this.authService.singIn(email, password).subscribe({
+      next:(data: any) => {
+        console.log(data)
+        this.router.navigate(['/welcome'])
+      },
+      error:(error => this.snackbar.open(error.message, 'Close', {duration: 5000}))
     })
     //form.reset()
   }
