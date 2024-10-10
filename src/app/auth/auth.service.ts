@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { user } from '../modelli/user.model';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject, switchMap } from 'rxjs';
+import { enviroment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private singUpUrl = 'http://localhost:5073/register'
-  private singInUrl = 'http://localhost:5073/login'
+  private singUpUrl = enviroment.API_REGISTER_URL;
+  private singInUrl = enviroment.API_LOGIN_URL;
   isLogged = false;
   isAdmin = true;
   //private isLoggedInSubject: BehaviorSubject<boolean>;
