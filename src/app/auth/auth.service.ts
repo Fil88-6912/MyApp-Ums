@@ -8,9 +8,6 @@ import { BehaviorSubject, Observable, of, Subject, switchMap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  //APIKey = 'AIzaSyDBJEfOClFJbrLroCz-qnIJoA3pIYIR_vI'
-  //singUpUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+this.APIKey
-  //singInUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+this.APIKey
   private singUpUrl = 'http://localhost:5073/register'
   private singInUrl = 'http://localhost:5073/login'
   isLogged = false;
